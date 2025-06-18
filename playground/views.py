@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 
 
 """ Its kind of request handler.
@@ -12,5 +12,9 @@ from django.http import HttpResponse
 # So in django views module is used for handle the request.
 
 
-def say_hello(request):
-    return HttpResponse('Hello World')
+def say_hello(request: HttpRequest) -> HttpResponse:
+    # Plain HTTP Response
+    # return HttpResponse('Hello World')
+
+    # Render a template as a response
+    return render(request, 'hello.html', {'name': 'Ankus'})
