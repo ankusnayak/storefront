@@ -50,9 +50,11 @@ INSTALLED_APPS = [
     # Whenever we have created a new app we need to register that in the list \
     # of apps - Here we have created a playground app so register that app \
     # here in the list of installed apps
-    'playground'
+    'playground',
+    'debug_toolbar',
 ]
 
+# We are using middleware to hook into django's request response processing.
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -61,6 +63,15 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+# Debugging toolbar will appear when we will send proper html document as \
+# as a response.
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
 ]
 
 ROOT_URLCONF = "storefront.urls"
